@@ -1,0 +1,14 @@
+﻿@model PasswordLessAuth.Models.DBContext
+<h1 style="color:violet">Has your checksum same</h1> <br />
+	<p >Name: @Model.Name</p>
+	<p> PublicKey:</p>
+	<p>@Model.Public_key_x</p>
+	<p>@Model.Public_key_y</p>
+	<p>checksum: @Model.public_key_hash</p>
+<form asp-action="InsertDB" method="post">
+	<input type="hidden" asp-for="Name" />
+	<input type="hidden" asp-for="Public_key_x"/>
+	<input type="hidden" asp-for="Public_key_y" />
+	<input type="hidden" asp-for="public_key_hash" />
+	<input type="submit" value="OK" />
+</form>

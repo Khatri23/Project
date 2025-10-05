@@ -1,0 +1,21 @@
+﻿@model PasswordLessAuth.Models.input
+<h2 style="color: yellow"> Server Challange</h2> <br />
+
+<h4>Server's Public key information </h4> <br />
+<p> @TempData["Public_Key_x"]</p> <br />
+<p>@TempData["Public_Key_y"]</p> <br />
+
+<h4> Hint</h4>
+<p> @TempData["hint1"]</p> <br />
+<p> @TempData["hint2"]</p> <br />
+
+<h4>Server's Signature</h4>
+<p>@TempData["s"]</p> <br />
+<p>@TempData["r"]</p> <br />
+<form asp-action="Phase2" method="post">
+	<p> publickey hash: @TempData["Phash"]</p> <br />
+	signature <br />
+	<input type="text" asp-for="signature_s" /> <br />
+	<input type="text" asp-for="signature_r" /> <br />
+	<input type="submit" name="submit" />
+</form>

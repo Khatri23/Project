@@ -1,0 +1,39 @@
+﻿@model PasswordLessAuth.Models.input
+<h1 style="color: blue">Secp256K1 curve</h1><br />
+<form asp-action="Index" method="post">
+	Public_key_Hash: <input type="text" asp-for="public_key_hash"/> <br />
+	Session Public_key_x: <input type="text" asp-for="public_key_x" /> <br />
+	Session Public_key_y: <input type="text" asp-for="public_key_y" /> <br />
+	Signature{s,r}: <br />
+	s: <input type="text" asp-for="signature_s" /> <br />
+	r: <input type="text" asp-for="signature_r" /> <br /> <br />
+	<input type="submit" value="Submit" /> <br />
+</form>
+<br /> <br />
+<form asp-action="Register" method="get" >
+	<input type="submit" value="Register" />
+</form>
+<br/> <br />
+<h3 style="color:brown">Database</h3> <br />
+@{
+	var items = ViewBag.obj as List<DBContext>;
+}
+<table style="border: 1px solid #333; border-collapse: collapse;">
+	<tr>
+		<th style="border: 1px solid #333; padding:10px 80px;">PublickeyHash</th>
+		<th style="border: 1px solid #333; padding:10px 100px;" colspan="1">Public key </th>
+		<th style="border: 1px solid #333; padding:10px 60px;"> Name </th>
+	</tr>
+	@if(items.Count > 0)
+	{
+		foreach(var u in items)
+		{
+			<tr>
+				<td style="border: 1px solid #333; padding:10px 80px;">@u.public_key_hash </td>
+				<td style="border: 1px solid #333; padding:10px 100px;" colspan="1">@u.Public_key_x , @u.Public_key_y </td>
+				<td style="border: 1px solid #333; padding:10px 60px;">@u.Name</td>
+			</tr>
+		}
+	}
+
+</table>

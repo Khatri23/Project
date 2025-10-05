@@ -1,0 +1,10 @@
+﻿<h1> Enter the input fields</h1>
+@model PasswordLessAuth.Models.DBContext
+<form asp-action="Register" method="post" >
+	Name: <input type="text" asp-for="Name" /> <br />
+	Public_key x: <input type="text"  asp-for="Public_key_x" /> <br />
+	public_key y: <input type="text"asp-for="Public_key_y" /> <br />
+
+	<br />
+	<input type="submit" value="proceed" />
+</form>
